@@ -1,7 +1,7 @@
 import importlib
 import os
 
-ENV_ROLE = os.getenv('BUSINESSCARD_ENV_ROLE', 'development')
+ENV_ROLE = os.getenv('BUSINESSCARD_ENV_ROLE', 'production')
 env_settings = importlib.import_module(f'back_end.settings.{ENV_ROLE}')
 
 variables = vars(env_settings)

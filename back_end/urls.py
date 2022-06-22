@@ -12,7 +12,6 @@ urlpatterns = [
     ]), name='api'),
 
 ]
-
 if not DEBUG:
     urlpatterns += [
         re_path(r'',
