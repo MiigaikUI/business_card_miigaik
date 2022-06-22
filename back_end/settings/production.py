@@ -31,13 +31,13 @@ DATABASES = {
     },
 }
 STATICFILES_DIRS = [
-    BASE_DIR / 'front_end/build/static',
+    BASE_DIR / 'front_end' / 'build' / 'static',
 ]
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR.parent / 'app-client/build',
+            BASE_DIR.parent / 'front_end' / 'build',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
