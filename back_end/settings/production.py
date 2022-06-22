@@ -29,6 +29,14 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
+    'abitur_list': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'abitur_list',
+        'USER': os.getenv('BUSINESSCARD_DB_USER'),
+        'PASSWORD': os.getenv('BUSINESSCARD_DB_PASSWORD'),
+        'HOST': 'localhost',
+        'PORT': '3306',
+    },
 }
 STATICFILES_DIRS = [
     BASE_DIR / 'front_end' / 'build' / 'static',

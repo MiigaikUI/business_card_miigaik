@@ -21,6 +21,9 @@ router = DefaultRouter()
 router.register(r'config',
                 SiteConfigurationViewSet,
                 'config')
+router.register(r'abitur',
+                AbiturViewSet,
+                'abitur')
 router.register(r'exam',
                 ExamViewSet,
                 'exam')
