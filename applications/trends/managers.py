@@ -17,4 +17,4 @@ class TrendManager(models.Manager):
         queryset = queryset.filter(exams__second_exam_group__id__in=exams) or queryset
         queryset = queryset.filter(exams__third_exam_group__id__in=exams) or queryset
         queryset = queryset.filter(mark__lte=marks) or queryset
-        return queryset.order_by('mark') if queryset else super().get_queryset().none()
+        return queryset.order_by('mark').distinct() if queryset else super().get_queryset().none()

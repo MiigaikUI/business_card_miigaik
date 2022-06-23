@@ -4,6 +4,7 @@ from rest_framework.documentation import include_docs_urls
 from rest_framework.routers import DefaultRouter
 from rest_framework.schemas import get_schema_view
 
+from applications.abitur.api import AbiturViewSet
 from applications.config.api import SiteConfigurationViewSet
 from applications.config.models import APIConfiguration
 from applications.events.api import IntramuralEventViewSet, ExtramuralEventViewSet

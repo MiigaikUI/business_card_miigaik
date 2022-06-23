@@ -1,6 +1,7 @@
-from re import search
 from django.core.exceptions import ValidationError
 from django.db import models
+from re import search
+
 from .managers import TrendManager, ExamManager
 
 
@@ -28,6 +29,11 @@ class Exam(models.Model):
     use = models.BooleanField(
         'unified state examination',
         default=False,
+    )
+    min_mark = models.PositiveIntegerField(
+        'minimal mark',
+        null=True,
+        blank=True,
     )
 
     class Meta:
@@ -96,6 +102,16 @@ class Trend(models.Model):
     paid = models.PositiveIntegerField(
         'paid seats',
         null=True,
+        blank=True,
+    )
+    education_form = models.CharField(
+        'education form',
+        max_length=20,
+        blank=True,
+    )
+    education_level = models.CharField(
+        'education level',
+        max_length=128,
         blank=True,
     )
     description = models.TextField(

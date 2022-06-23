@@ -19,6 +19,7 @@ USE_L10N = True
 LANGUAGE_CODE = 'ru-ru'
 
 INSTALLED_APPS = [
+    'applications.abitur',
     'applications.trends',
     'applications.config',
     'applications.events',
