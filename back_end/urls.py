@@ -12,7 +12,7 @@ urlpatterns = [
     ]), name='api'),
 
 ]
-if not DEBUG:
+if DEBUG:
     urlpatterns += [
         re_path(r'',
                 ensure_csrf_cookie(TemplateView.as_view(template_name='index.html')),

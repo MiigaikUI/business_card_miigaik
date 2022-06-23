@@ -1,7 +1,7 @@
 import os
 from .base import *
 
-DEBUG = False
+DEBUG = True
 SECRET_KEY = os.getenv('BUSINESSCARD_SECRET_KEY', 'ASD')
 ALLOWED_HOSTS = [os.getenv('BUSINESSCARD_ALLOWED_HOST', '*')]
 

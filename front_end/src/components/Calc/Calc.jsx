@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { FilledInput, Stack } from "@mui/material";
+import { FilledInput, List, ListItem, Stack, Typography } from "@mui/material";
 import { useState, useContext } from "react";
 import styled from "@emotion/styled";
 import { Box } from "@mui/system";
@@ -19,7 +19,7 @@ const CardText = styled.div`
   font-family: "Roboto Slab" serif;
 `;
 const Title = styled.div`
-  margin-top:16px;
+  margin-top: 16px;
   font-family: "Roboto Slab", serif;
   font-size: 28px;
   max-width: 60%;
@@ -33,25 +33,27 @@ const Calc = () => {
   const [trends, setTrends] = useState([]);
   const [data, setData] = useState([]);
   let [url, setUrl] = useState("");
+  let [exams, setExams] = useState([]);
 
   // Get exams from API
   const fetchData = async (url) => {
-    const response = await fetch(`/api/v1/exam/use/`);
+    const response = await fetch(`/api/v1/exam/${url}`);
     const data = await response.json();
     return data;
   };
 
   useEffect(() => {
-    fetchData().then((data) => {
+    fetchData('').then((data) => {
+      setExams(data);
+    });
+    fetchData("use/").then((data) => {
       setData(data);
     });
   }, []);
 
   // Get result of calc from API
   const CalcResult = async (url) => {
-    const response = await fetch(
-      `/api/v1/trend/calc/${url}`
-    );
+    const response = await fetch(`/api/v1/trend/calc/${url}`);
     const CalcTrends = await response.json();
     // console.log(CalcTrends)
     setTrends(CalcTrends);
@@ -67,8 +69,12 @@ const Calc = () => {
     };
     data.map((item) =>
       item.status == true
-        ? (params.marks.push(`marks=${item.mark}`),
-          params.exams.push(`exams=${item.id}`))
+        ? item.mark > item.min_mark
+          ? (params.marks.push(`marks=${item.mark}`),
+            params.exams.push(`exams=${item.id}`))
+          : alert(
+              `Минимальное допустимое значение в поле ${item.title}: ${item.min_mark}`
+            )
         : undefined
     );
     localUrl = `?${params.exams.join("&")}&${params.marks.join("&")}`;
@@ -146,8 +152,6 @@ const Calc = () => {
             });
             setData((data) => [...data]);
             setTrends((trends) => []);
-
-            console.log(data);
           }}
         >
           Очистить
@@ -179,7 +183,6 @@ const Calc = () => {
                   }}
                   visible={item.status}
                   type="number"
-                  min={100}
                   name={item.examId}
                   onChange={(event) => {
                     data[index].mark = Number(event.target.value);
@@ -205,10 +208,8 @@ const Calc = () => {
                 Удалить
               </Button>
             </Stack>
-          ) : (
-            // () => alert(item)
-            null
-          )
+          ) : // () => alert(item)
+          null
         )}
       </Stack>
       <Stack>
@@ -223,7 +224,6 @@ const Calc = () => {
             if (localUrl != "?&") {
               CalcResult(localUrl);
             }
-            console.log(trends)
           }}
         >
           Расчет
@@ -234,8 +234,8 @@ const Calc = () => {
           <h1>{e.title}</h1>;
         })}
         <Carousel
-        autoPlay={false}
-        animation="slide"
+          autoPlay={false}
+          animation="slide"
           sx={{
             marginTop: "10px",
           }}
@@ -257,9 +257,64 @@ const Calc = () => {
                 >
                   {e.code} {e.title}
                 </Box>
-                <CardText>Средний балл: {e.mark}</CardText>
-                <CardText>Бюджетных мест: {e.budget}</CardText>
-                <CardText>Платных мест: {e.paid}</CardText>
+                <Stack
+                  sx={{
+                    justifyContent: "space-between",
+                  }}
+                  direction={{
+                    xs: "column",
+                    sm: "column",
+                    md: "row",
+                    lg: "row",
+                    xl: "row",
+                  }}
+                >
+                  <Stack>
+                    <CardText>
+                      Уровень образования: {e.education_level}
+                    </CardText>
+                    <CardText>Форма обучения: {e.education_form}</CardText>
+                    <CardText>Экзамены: </CardText>
+                    {e.exams.first_exam_group.map((index)=>
+                    <Box>
+                      <CardText>{exams[index].title} {'('}{exams[index].use ? 'ЕГЭ' :  'Внутренний экзамен)'}</CardText>
+                     
+                    </Box>)}
+                    {e.exams.second_exam_group.map((index)=>
+                    <Box>
+                      <CardText>{exams[index].title} {'('}{exams[index].use ? 'ЕГЭ' :  'Внутренний экзамен)'}</CardText>
+                      
+                    </Box>)}
+                    {e.exams.third_exam_group.map((index)=>
+                    <Box>
+                      <CardText>{exams[index].title} {'('}{exams[index].use ? 'ЕГЭ' :  'Внутренний экзамен)'}</CardText>
+                     
+                    </Box>)}
+                    
+                  </Stack>
+                  <Stack>
+                    <CardText>Средний балл: {e.mark}</CardText>
+                    <CardText>Бюджетных мест: {e.budget}</CardText>
+                    <CardText>Платных мест: {e.paid}</CardText>
+                  </Stack>
+                </Stack>
+                {e.description ? (
+                  <Stack>
+                    <Box
+                      sx={{
+                        fontSize: "24px",
+                      }}
+                    >
+                      Программы обучения
+                    </Box>
+                    {e.description
+                      .split("⼀")
+                      .slice(1)
+                      .map((item) => {
+                        return <CardText>- {item}</CardText>;
+                      })}
+                  </Stack>
+                ) : null}
               </CardContent>
             </Card>
           ))}
