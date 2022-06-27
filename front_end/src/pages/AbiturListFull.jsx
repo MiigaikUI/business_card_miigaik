@@ -83,7 +83,7 @@ function AbiturList() {
 
   // Процессы при загрузке, работа лоадера
   useEffect(() => {
-    fetchData("http://abiturient.miigaik.ru/get_parameters/").then((data) => {
+    fetchData("/get_parameters/").then((data) => {
       setFiltres(data);
       setKeys(Object.keys(filters));
       setIsLoading(false);
