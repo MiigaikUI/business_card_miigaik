@@ -146,8 +146,7 @@ yarn-error.log*
 
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
-front_end/build/Release
-
+front_end/build/
 # Dependency directories
 front_end/node_modules/
 front_end/jspm_packages/
