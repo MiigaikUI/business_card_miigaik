@@ -43,7 +43,7 @@ const Calc = () => {
   };
 
   useEffect(() => {
-    fetchData('').then((data) => {
+    fetchData("").then((data) => {
       setExams(data);
     });
     fetchData("use/").then((data) => {
@@ -67,18 +67,18 @@ const Calc = () => {
       marks: [],
       exams: [],
     };
-    data.map((item) =>
-      item.status == true
-        ? item.mark > item.min_mark
-          ? (params.marks.push(`marks=${item.mark}`),
-            params.exams.push(`exams=${item.id}`))
-          : alert(
-              `Минимальное допустимое значение в поле ${item.title}: ${item.min_mark}`
-            )
-        : undefined
+    data.map(
+      (item) =>
+        item.status == true
+          ? item.mark > item.min_mark
+            ? (params.marks.push(`marks=${item.mark}`),
+              params.exams.push(`exams=${item.id}`))
+            : alert(
+                `Минимальное допустимое значение в поле ${item.title}: ${item.min_mark}`
+              )
+          : (localUrl = `?${params.exams.join("&")}&${params.marks.join("&")}`),
+      setUrl(localUrl)
     );
-    localUrl = `?${params.exams.join("&")}&${params.marks.join("&")}`;
-    setUrl(localUrl);
   };
 
   return (
@@ -275,22 +275,30 @@ const Calc = () => {
                     </CardText>
                     <CardText>Форма обучения: {e.education_form}</CardText>
                     <CardText>Экзамены: </CardText>
-                    {e.exams.first_exam_group.map((index)=>
-                    <Box>
-                      <CardText>{exams[index].title} {'('}{exams[index].use ? 'ЕГЭ' :  'Внутренний экзамен)'}</CardText>
-                     
-                    </Box>)}
-                    {e.exams.second_exam_group.map((index)=>
-                    <Box>
-                      <CardText>{exams[index].title} {'('}{exams[index].use ? 'ЕГЭ' :  'Внутренний экзамен)'}</CardText>
-                      
-                    </Box>)}
-                    {e.exams.third_exam_group.map((index)=>
-                    <Box>
-                      <CardText>{exams[index].title} {'('}{exams[index].use ? 'ЕГЭ' :  'Внутренний экзамен)'}</CardText>
-                     
-                    </Box>)}
-                    
+                    {e.exams.first_exam_group.map((index) => (
+                      <Box>
+                        <CardText>
+                          {exams[index].title} {"("}
+                          {exams[index].use ? "ЕГЭ" : "Внутренний экзамен)"}
+                        </CardText>
+                      </Box>
+                    ))}
+                    {e.exams.second_exam_group.map((index) => (
+                      <Box>
+                        <CardText>
+                          {exams[index].title} {"("}
+                          {exams[index].use ? "ЕГЭ" : "Внутренний экзамен)"}
+                        </CardText>
+                      </Box>
+                    ))}
+                    {e.exams.third_exam_group.map((index) => (
+                      <Box>
+                        <CardText>
+                          {exams[index].title} {"("}
+                          {exams[index].use ? "ЕГЭ" : "Внутренний экзамен)"}
+                        </CardText>
+                      </Box>
+                    ))}
                   </Stack>
                   <Stack>
                     <CardText>Средний балл: {e.mark}</CardText>

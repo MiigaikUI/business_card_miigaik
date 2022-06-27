@@ -36,6 +36,7 @@ const NavItem = styled.a`
   }
 `;
 
+
 function AbiturList() {
   const [filters, setFiltres] = useState([]); // получаемые параметры для селектов
   const [keys, setKeys] = useState([]); // Ключи селектов
@@ -82,7 +83,7 @@ function AbiturList() {
 
   // Процессы при загрузке, работа лоадера
   useEffect(() => {
-    fetchData("/get_parameters/").then((data) => {
+    fetchData("http://abiturient.miigaik.ru/get_parameters/").then((data) => {
       setFiltres(data);
       setKeys(Object.keys(filters));
       setIsLoading(false);
@@ -395,6 +396,23 @@ function AbiturList() {
                   >
                     Страница университета
                   </a>
+                  <Link to="" style={{
+                    textDecoration: "none",
+                    color: " #434B4D",
+                    fontSize: "24px",
+                  }}>Абитуриенту</Link>
+                  <Stack>
+                  <a
+                    href="https://miigaik.ru/Abitur/question/"
+                    style={{
+                      textDecoration: "none",
+                      color: " #434B4D",
+                      fontSize: "24px",
+                    }}
+                  >
+                    Задать вопрос приёмной комиссии
+                  </a>
+                </Stack>
                 </Stack>
                 <Stack>
                   <a
