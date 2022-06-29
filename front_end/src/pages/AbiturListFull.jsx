@@ -169,6 +169,7 @@ function AbiturList() {
 
   // Запрос, чтобы забрать параметры для таблицы абитуриентов
   const AbiturParamGet = (abiturSearchUrl) => {
+    setParams([]);
     let abiturParamUrl = `/par_${abiturSearchUrl.slice(1)}`;
     console.log(abiturParamUrl);
     fetchData(abiturParamUrl).then((data) => setParams(data));
@@ -269,7 +270,7 @@ function AbiturList() {
               }}
             >
               <Stack>
-                <Link style={{ textDecoration: "none" }} to="">
+                <Link style={{ textDecoration: "none" }} to="/">
                   <Box
                     sx={{
                       color: " #434B4D",
@@ -396,7 +397,7 @@ function AbiturList() {
                   >
                     Страница университета
                   </a>
-                  <Link to="" style={{
+                  <Link to="/" style={{
                     textDecoration: "none",
                     color: " #434B4D",
                     fontSize: "24px",
@@ -583,8 +584,8 @@ function AbiturList() {
               sx={{ width: "250px" }}
               variant="outlined"
               onClick={() => {
+                setList([])
                 urlConstructor(spec, level, form, fin, doc, soglas);
-
                 if (abiturSearchUrl) {
                   AbiturGet(abiturSearchUrl);
                   AbiturParamGet(abiturSearchUrl);

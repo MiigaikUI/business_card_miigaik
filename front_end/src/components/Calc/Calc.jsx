@@ -67,18 +67,41 @@ const Calc = () => {
       marks: [],
       exams: [],
     };
-    data.map(
-      (item) =>
-        item.status == true
-          ? item.mark > item.min_mark
-            ? (params.marks.push(`marks=${item.mark}`),
-              params.exams.push(`exams=${item.id}`))
-            : alert(
-                `Минимальное допустимое значение в поле ${item.title}: ${item.min_mark}`
-              )
-          : (localUrl = `?${params.exams.join("&")}&${params.marks.join("&")}`),
+
+    // data.map(
+    //   (item) =>
+    //     item.status == true
+    //       ? item.mark > item.min_mark
+    //         ? (params.marks.push(`marks=${item.mark}`),
+    //           params.exams.push(`exams=${item.id}`),
+    //           (localUrl = `?${params.exams.join("&")}&${params.marks.join(
+    //             "&"
+    //           )}`))
+    //         : (alert(
+    //             `Минимальное допустимое значение в поле ${item.title}: ${item.min_mark}`
+    //           ),
+    //           (localUrl = "?&"))
+    //       : undefined,
+    //   setUrl(localUrl)
+    // );
+
+    for (let item of data) {
+      if (item.status == true) {
+        if (item.mark > item.min_mark) {
+         
+          params.marks.push(`marks=${item.mark}`);
+          params.exams.push(`exams=${item.id}`);
+          localUrl = `?${params.exams.join("&")}&${params.marks.join("&")}`;
+        } else {
+          alert(`Минимальное допустимое значение в поле ${item.title}: ${item.min_mark}`);
+          localUrl="?&"
+          break;
+          
+        }
+        
+      }
       setUrl(localUrl)
-    );
+    }
   };
 
   return (
@@ -279,7 +302,7 @@ const Calc = () => {
                       <Box>
                         <CardText>
                           {exams[index].title} {"("}
-                          {exams[index].use ? "ЕГЭ" : "Внутренний экзамен)"}
+                          {exams[index].use ? "ЕГЭ)" : "Внутренний экзамен)"}
                         </CardText>
                       </Box>
                     ))}
@@ -287,7 +310,7 @@ const Calc = () => {
                       <Box>
                         <CardText>
                           {exams[index].title} {"("}
-                          {exams[index].use ? "ЕГЭ" : "Внутренний экзамен)"}
+                          {exams[index].use ? "ЕГЭ)" : "Внутренний экзамен)"}
                         </CardText>
                       </Box>
                     ))}
@@ -295,7 +318,7 @@ const Calc = () => {
                       <Box>
                         <CardText>
                           {exams[index].title} {"("}
-                          {exams[index].use ? "ЕГЭ" : "Внутренний экзамен)"}
+                          {exams[index].use ? "ЕГЭ)" : "Внутренний экзамен)"}
                         </CardText>
                       </Box>
                     ))}
