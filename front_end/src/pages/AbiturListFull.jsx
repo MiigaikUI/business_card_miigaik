@@ -27,7 +27,7 @@ const Menu = styled.div`
 `;
 
 const NavItem = styled.a`
-  fontFamily:'Roboto';
+  fontfamily: "Roboto";
   text-decoration: none;
   color: #434b4d;
   font-size: 18px;
@@ -35,7 +35,6 @@ const NavItem = styled.a`
     color: rgb(25 118 210);
   }
 `;
-
 
 function AbiturList() {
   const [filters, setFiltres] = useState([]); // получаемые параметры для селектов
@@ -73,11 +72,9 @@ function AbiturList() {
 
   // Универсальная функция для API
   const fetchData = async (url) => {
-    const response = await fetch(
-      `/api/v1/abitur${url}`
-    );
+    const response = await fetch(`/api/v1/abitur${url}`);
     const data = await response.json();
-      
+
     return data;
   };
 
@@ -233,7 +230,7 @@ function AbiturList() {
             position: "fixed",
             marginLeft: "-40px",
             marginTop: "-10px",
-            minHeight:'75px'
+            minHeight: "75px",
           }}
         >
           <Stack
@@ -275,9 +272,9 @@ function AbiturList() {
                     sx={{
                       color: " #434B4D",
                       fontSize: "18px",
-                      '&:hover':{
-                        color:' rgb(25 118 210)'
-                      }
+                      "&:hover": {
+                        color: " rgb(25 118 210)",
+                      },
                     }}
                   >
                     Абитуриенту
@@ -290,7 +287,7 @@ function AbiturList() {
                 </NavItem>
               </Stack>
               <Stack>
-              <NavItem href=" https://miigaik.ru/Abitur/">
+                <NavItem href=" https://miigaik.ru/Abitur/">
                   Вопрос приёмной комиссии
                 </NavItem>
               </Stack>
@@ -370,50 +367,51 @@ function AbiturList() {
                 top: "50%",
                 left: "50%",
                 transform: "translate(-50%, -50%)",
-                width:'95%',
+                width: "95%",
                 bgcolor: "background.paper",
                 border: "2px solid #000",
                 boxShadow: 24,
               }}
             >
               <Stack
-              direction="column"
+                direction="column"
                 sx={{
                   justifyContent: "space-between",
                   alignItems: "center",
                   gap: "30px",
-                  height:'100%'
+                  height: "100%",
                 }}
               >
                 <h1>Меню</h1>
                 <Stack>
-                  <a
-                    href=" https://miigaik.ru/"
-                    style={{
-                      textDecoration: "none",
-                      color: " #434B4D",
-                      fontSize: "24px",
-                    }}
-                  >
-                    Страница университета
-                  </a>
-                  <Link to="/" style={{
-                    textDecoration: "none",
-                    color: " #434B4D",
-                    fontSize: "24px",
-                  }}>Абитуриенту</Link>
                   <Stack>
-                  <a
-                    href="https://miigaik.ru/Abitur/question/"
-                    style={{
-                      textDecoration: "none",
-                      color: " #434B4D",
-                      fontSize: "24px",
-                    }}
-                  >
-                    Задать вопрос приёмной комиссии
-                  </a>
-                </Stack>
+                    <a
+                      href=" https://miigaik.ru/"
+                      style={{
+                        textDecoration: "none",
+                        color: " #434B4D",
+                        fontSize: "24px",
+                      }}
+                    >
+                      Страница университета
+                    </a>
+                  </Stack>
+                  <Stack sx={{
+                    justifyContent:'center',
+                    alignItems:'center',
+                    marginTop:'30px'
+                  }}>
+                    <Link
+                      to="/"
+                      style={{
+                        textDecoration: "none",
+                        color: " #434B4D",
+                        fontSize: "24px",
+                      }}
+                    >
+                      Абитуриенту
+                    </Link>
+                  </Stack>
                 </Stack>
                 <Stack>
                   <a
@@ -512,7 +510,7 @@ function AbiturList() {
                       <MenuItem
                         sx={{
                           zIndex: "100000",
-                          width:'80vw'
+                          width: "80vw",
                         }}
                         disabled
                       >
@@ -584,7 +582,7 @@ function AbiturList() {
               sx={{ width: "250px" }}
               variant="outlined"
               onClick={() => {
-                setList([])
+                setList([]);
                 urlConstructor(spec, level, form, fin, doc, soglas);
                 if (abiturSearchUrl) {
                   AbiturGet(abiturSearchUrl);
@@ -618,9 +616,11 @@ function AbiturList() {
       )}
       <div>
         {listLoader ? (
-          <Stack sx={{
-            alignItems:'center'
-          }}>
+          <Stack
+            sx={{
+              alignItems: "center",
+            }}
+          >
             <CircularProgress />
           </Stack>
         ) : (
