@@ -1,4 +1,5 @@
 from django.db import models
+import django_filters
 
 
 class AbiturManager(models.Manager):
@@ -25,8 +26,11 @@ class AbiturManager(models.Manager):
             CompGroupsId.add(ele.comp_group_id)
         queryset = queryset.filter(**filters).filter(comp_group_id__in=CompGroupsId)
         if kwargs:
-            return queryset.order_by('-wo_exam', '-points_all', '-points_sub', '-points1', '-points2', '-points3', '-points4', '-points_id',
-                                     '-advantage', '-doc_type', 'soglasie')
+            return queryset.extra(
+                select={'points_all': "CAST(substring(charfield FROM '^[0-9]+') AS INTEGER)"}
+            ).order_by(
+                '-wo_exam', '-points_all', '-points_sub', '-points1', '-points2', '-points3', '-points4','-points_id',
+                '-advantage', '-doc_type', 'soglasie')
         return queryset.none()
 
     def bak(self, **kwargs):
