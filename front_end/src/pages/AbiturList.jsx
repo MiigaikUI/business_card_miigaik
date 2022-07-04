@@ -36,7 +36,7 @@ const NavItem = styled.a`
   }
 `;
 
-function AbiturListFull() {
+function AbiturList() {
   const [filters, setFiltres] = useState([]); // получаемые параметры для селектов
   const [keys, setKeys] = useState([]); // Ключи селектов
   const [list, setList] = useState([]); // Список полученных студентов
@@ -116,7 +116,7 @@ function AbiturListFull() {
     };
 
     if (level.length > 0) {
-      abiturSearchUrl = `/${eduLvl[level]}/?`;
+      abiturSearchUrl = `/${eduLvl[level]}_short/?`;
       if (spec.length > 0) {
         abiturSearchUrl += `speciality=${spec}&`;
       } else {
@@ -145,6 +145,7 @@ function AbiturListFull() {
       flag = 1;
       alert("Укажите уровень образования");
     }
+
 
     if (flag) {
       abiturSearchUrl = undefined;
@@ -481,8 +482,7 @@ function AbiturListFull() {
             },
           }}
         ></Box>
-        {/* <Typography variant="h4">Списки поступающих (<Link to="abitur/">Сокращенная версия</Link>)</Typography> */}
-        <Typography variant="h4">Списки поступающих</Typography>
+        <Typography variant="h4">Списки поступающих (<Link to="abitur-extra/">Полная версия</Link>)</Typography>
         <Stack
           direction={{
             xs: "column",
@@ -682,4 +682,4 @@ function AbiturListFull() {
   );
 }
 
-export default AbiturListFull;
+export default AbiturList;
