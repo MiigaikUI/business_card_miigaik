@@ -266,7 +266,10 @@ function AbiturList() {
                 gap: "30px",
               }}
             >
-              <Stack>
+              <Stack sx={{
+                justifyContent:'center',
+                textAlign:'center'
+              }}>
                 <Link style={{ textDecoration: "none" }} to="/">
                   <Box
                     sx={{
@@ -281,12 +284,18 @@ function AbiturList() {
                   </Box>
                 </Link>
               </Stack>
-              <Stack>
+              <Stack sx={{
+                justifyContent:'center',
+                textAlign:'center'
+              }}>
                 <NavItem href=" https://miigaik.ru/Abitur/">
                   Приемная кампания 2022
                 </NavItem>
               </Stack>
-              <Stack>
+              <Stack sx={{
+                justifyContent:'center',
+                textAlign:'center'
+              }}>
                 <NavItem href=" https://miigaik.ru/Abitur/">
                   Вопрос приёмной комиссии
                 </NavItem>
@@ -307,7 +316,7 @@ function AbiturList() {
               <MailOutlineIcon />
               <Typography>pk@miigaik.ru</Typography>
             </Stack>
-            <Stack direction="row" sx={{ alignItems: "center", gap: "5px" }}>
+            <Stack direction="row" sx={{ alignItems: "center", gap: "5px", textAlign:'center' }}>
               <LocalPhoneIcon />
               <Typography>+7 (499) 267-15-45</Typography>
             </Stack>
