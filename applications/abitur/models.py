@@ -54,7 +54,7 @@ class Abitur(models.Model):
     comp_group_id = models.TextField(blank=True, null=True)
     unikey = models.CharField(unique=True, max_length=255, blank=True, null=True)
     wo_exam = models.IntegerField(blank=True, null=True)
-    points_all = models.DecimalField(max_digits=11, decimal_places=1, blank=True, null=True)
+    points_all = models.TextField(blank=True, null=True)
     points_sub = models.DecimalField(max_digits=11, decimal_places=1, blank=True, null=True)
     points1 = models.TextField(blank=True, null=True)
     form_sub1 = models.TextField(blank=True, null=True)
