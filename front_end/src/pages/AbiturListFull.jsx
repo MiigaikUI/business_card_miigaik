@@ -87,7 +87,7 @@ function AbiturList() {
     });
   }, []);
 
-  //Формирование урла для запроса чтоб взять абитуриентов ебучих
+  //Формирование урла для запроса чтоб взять абитуриентов
   let abiturSearchUrl;
   const urlConstructor = (spec, level, form, fin, doc, soglas) => {
     switch (doc) {
