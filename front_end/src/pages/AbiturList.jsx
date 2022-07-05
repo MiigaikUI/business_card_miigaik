@@ -494,12 +494,15 @@ function AbiturList() {
         ></Box>
        <Stack sx={{
         justifyContent:'space-between',
-        alignItems:'space-between'
        }}>
+       <Stack>
        <Typography variant="h4">
           Списки поступающих 
         </Typography>
+       </Stack>
+        <Stack>
         <Link to="../abitur-extra/">(Полная версия)</Link>
+        </Stack>
        </Stack>
         <Stack
           direction={{
