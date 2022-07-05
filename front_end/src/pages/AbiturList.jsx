@@ -146,7 +146,6 @@ function AbiturList() {
       alert("Укажите уровень образования");
     }
 
-
     if (flag) {
       abiturSearchUrl = undefined;
     }
@@ -169,7 +168,7 @@ function AbiturList() {
   const AbiturParamGet = (abiturSearchUrl) => {
     setParams([]);
     let abiturParamUrl = `/par_${abiturSearchUrl.slice(1)}`;
-    console.log(abiturParamUrl);
+    // console.log(abiturParamUrl);
     fetchData(abiturParamUrl).then((data) => setParams(data));
   };
 
@@ -267,10 +266,12 @@ function AbiturList() {
                 gap: "30px",
               }}
             >
-              <Stack sx={{
-                justifyContent:'center',
-                textAlign:'center'
-              }}>
+              <Stack
+                sx={{
+                  justifyContent: "center",
+                  textAlign: "center",
+                }}
+              >
                 <Link style={{ textDecoration: "none" }} to="/">
                   <Box
                     sx={{
@@ -285,18 +286,22 @@ function AbiturList() {
                   </Box>
                 </Link>
               </Stack>
-              <Stack sx={{
-                justifyContent:'center',
-                textAlign:'center'
-              }}>
+              <Stack
+                sx={{
+                  justifyContent: "center",
+                  textAlign: "center",
+                }}
+              >
                 <NavItem href=" https://miigaik.ru/Abitur/">
                   Приемная кампания 2022
                 </NavItem>
               </Stack>
-              <Stack sx={{
-                justifyContent:'center',
-                textAlign:'center'
-              }}>
+              <Stack
+                sx={{
+                  justifyContent: "center",
+                  textAlign: "center",
+                }}
+              >
                 <NavItem href=" https://miigaik.ru/Abitur/">
                   Вопрос приёмной комиссии
                 </NavItem>
@@ -317,7 +322,10 @@ function AbiturList() {
               <MailOutlineIcon />
               <Typography>pk@miigaik.ru</Typography>
             </Stack>
-            <Stack direction="row" sx={{ alignItems: "center", gap: "5px", textAlign:'center' }}>
+            <Stack
+              direction="row"
+              sx={{ alignItems: "center", gap: "5px", textAlign: "center" }}
+            >
               <LocalPhoneIcon />
               <Typography>+7 (499) 267-15-45</Typography>
             </Stack>
@@ -406,11 +414,13 @@ function AbiturList() {
                       Страница университета
                     </a>
                   </Stack>
-                  <Stack sx={{
-                    justifyContent:'center',
-                    alignItems:'center',
-                    marginTop:'30px'
-                  }}>
+                  <Stack
+                    sx={{
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginTop: "30px",
+                    }}
+                  >
                     <Link
                       to="/"
                       style={{
@@ -482,7 +492,15 @@ function AbiturList() {
             },
           }}
         ></Box>
-        <Typography variant="h4">Списки поступающих (<Link to="abitur-extra/">Полная версия</Link>)</Typography>
+       <Stack sx={{
+        justifyContent:'space-between',
+        alignItems:'space-between'
+       }}>
+       <Typography variant="h4">
+          Списки поступающих 
+        </Typography>
+        <Link to="../abitur-extra/">(Полная версия)</Link>
+       </Stack>
         <Stack
           direction={{
             xs: "column",
@@ -499,7 +517,7 @@ function AbiturList() {
         >
           {Object.keys(filters).map((select, index) => {
             if (typeof labelsSelect[select] !== "undefined") {
-              console.log(select);
+              // console.log(select);
               return (
                 <Stack
                   direction={{ xs: "row", sm: "row" }}
@@ -636,13 +654,20 @@ function AbiturList() {
         ) : (
           <Box
             sx={{
+              display: "flex",
               overflowX: "scroll",
               "&::-webkit-scrollbar": {
                 width: 0,
               },
+              justifyContent: "center",
             }}
           >
-            <Table aria-label="simple table">
+            <Table
+              aria-label="simple table"
+              sx={{
+                width: "auto",
+              }}
+            >
               <TableHead>
                 <TableRow>
                   {Object.values(params).map((ele) => {

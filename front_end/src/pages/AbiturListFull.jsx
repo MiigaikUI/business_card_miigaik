@@ -168,7 +168,7 @@ function AbiturListFull() {
   const AbiturParamGet = (abiturSearchUrl) => {
     setParams([]);
     let abiturParamUrl = `/par_${abiturSearchUrl.slice(1)}`;
-    console.log(abiturParamUrl);
+    // console.log(abiturParamUrl);
     fetchData(abiturParamUrl).then((data) => setParams(data));
   };
 
@@ -499,7 +499,7 @@ function AbiturListFull() {
         >
           {Object.keys(filters).map((select, index) => {
             if (typeof labelsSelect[select] !== "undefined") {
-              console.log(select);
+              // console.log(select);
               return (
                 <Stack
                   direction={{ xs: "row", sm: "row" }}
