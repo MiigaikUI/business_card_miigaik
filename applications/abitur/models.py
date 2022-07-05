@@ -1,10 +1,12 @@
 from django.db import models
-import django_filters
+from django.db.models.functions import Cast
 
 
 class AbiturManager(models.Manager):
     def get_queryset(self):
-        return super().get_queryset().using('abitur_list')
+        return super().get_queryset().using('abitur_list').annotate(
+            points_all_subint=Cast('points_all', models.IntegerField())
+        )
 
     def get(self, **kwargs):
         queryset = self.get_queryset()
@@ -27,8 +29,8 @@ class AbiturManager(models.Manager):
         queryset = queryset.filter(**filters).filter(comp_group_id__in=CompGroupsId)
         if kwargs:
             return queryset.order_by(
-                '-wo_exam', '-points_all', '-points_sub', '-points1', '-points2', '-points3', '-points4','-points_id',
-                '-advantage', '-doc_type', 'soglasie')
+                'wo_exam', '-points_all_subint', '-points_sub', '-points1', '-points2', '-points3', '-points4',
+                '-points_id', '-advantage', '-doc_type', 'soglasie')
         return queryset.none()
 
     def bak(self, **kwargs):
