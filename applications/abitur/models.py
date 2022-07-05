@@ -29,8 +29,8 @@ class AbiturManager(models.Manager):
         queryset = queryset.filter(**filters).filter(comp_group_id__in=CompGroupsId)
         if kwargs:
             return queryset.order_by(
-                'wo_exam', '-points_all_subint', '-points_sub', '-points1', '-points2', '-points3', '-points4',
-                '-points_id', '-advantage', '-doc_type', 'soglasie')
+                '-wo_exam', '-points_all_subint', '-points_sub', '-points1', '-points2', '-points3', '-points4',
+                '-points_id', 'advantage', 'att_points')
         return queryset.none()
 
     def bak(self, **kwargs):
