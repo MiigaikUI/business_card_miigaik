@@ -482,7 +482,18 @@ function AbiturListFull() {
           }}
         ></Box>
         {/* <Typography variant="h4">Списки поступающих (<Link to="abitur/">Сокращенная версия</Link>)</Typography> */}
-        <Typography variant="h4">Списки поступающих</Typography>
+        <Stack sx={{
+        justifyContent:'space-between',
+       }}>
+       <Stack>
+       <Typography variant="h4">
+          Списки поступающих 
+        </Typography>
+       </Stack>
+        <Stack>
+        <Link to="../abitur/">(Сокращенная версия)</Link>
+        </Stack>
+       </Stack>
         <Stack
           direction={{
             xs: "column",
