@@ -87,7 +87,7 @@ const Calc = () => {
 
     for (let item of data) {
       if (item.status == true) {
-        if (item.mark > item.min_mark) {
+        if (item.mark >= item.min_mark) {
          
           params.marks.push(`marks=${item.mark}`);
           params.exams.push(`exams=${item.id}`);
