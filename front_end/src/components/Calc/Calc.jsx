@@ -299,26 +299,28 @@ const Calc = () => {
                     <CardText>Форма обучения: {e.education_form}</CardText>
                     <CardText>Экзамены: </CardText>
                     {e.exams.first_exam_group.map((index) => (
+                   
                       <Box>
                         <CardText>
-                          {exams[index].title} {"("}
-                          {exams[index].use ? "ЕГЭ)" : "Внутренний экзамен)"}
+                          {exams[index-1].title} {"("}
+                          {exams[index-1].use ? "ЕГЭ)" : "Внутренний экзамен)"}
                         </CardText>
                       </Box>
+                    
                     ))}
                     {e.exams.second_exam_group.map((index) => (
                       <Box>
                         <CardText>
-                          {exams[index].title} {"("}
-                          {exams[index].use ? "ЕГЭ)" : "Внутренний экзамен)"}
+                          {exams[index-1].title} {"("}
+                          {exams[index-1].use ? "ЕГЭ)" : "Внутренний экзамен)"}
                         </CardText>
                       </Box>
                     ))}
                     {e.exams.third_exam_group.map((index) => (
                       <Box>
                         <CardText>
-                          {exams[index].title} {"("}
-                          {exams[index].use ? "ЕГЭ)" : "Внутренний экзамен)"}
+                          {exams[index-1].title} {"("}
+                          {exams[index-1].use ? "ЕГЭ)" : "Внутренний экзамен)"}
                         </CardText>
                       </Box>
                     ))}
