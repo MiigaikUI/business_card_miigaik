@@ -330,7 +330,7 @@ export default function Timeline() {
             },
           }}
           alternativeLabel
-          activeStep={activeStepFinder(extamural)}
+          activeStep={activeStepFinder(extamural) + 1}
           connector={<ColorlibConnector />}
         >
           {Object.keys(extamural).map((key) => (
