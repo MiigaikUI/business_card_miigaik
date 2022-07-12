@@ -100,10 +100,10 @@ function AbiturListFull() {
     }
     switch (soglas) {
       case true:
-        soglas = 0;
+        soglas = 1;
         break;
       case false:
-        soglas = 1;
+        soglas = 0;
         break;
     }
 
@@ -138,8 +138,8 @@ function AbiturListFull() {
       if (doc) {
         abiturSearchUrl += `doc_type=${filters.doc_type[doc]}&`;
       }
-      if (!soglas) {
-        abiturSearchUrl += `soglasie=${filters.soglasie[soglas]}&`;
+      if (soglas) {
+        abiturSearchUrl += `soglasie=${filters.soglasie[!soglas]}&`;
       }
     } else {
       flag = 1;
