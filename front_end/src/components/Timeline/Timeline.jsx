@@ -153,7 +153,7 @@ export default function Timeline() {
     events.map((item, index) => {
       let date = new Date(item.date);
       let actual_date = new Date();
-      if (actual_date > date) {
+      if (actual_date >= date) {
         current = index;
       }
     });
