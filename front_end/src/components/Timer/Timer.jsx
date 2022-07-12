@@ -62,7 +62,7 @@ export default function Timer() {
       const now = new Date().getTime();
       const distance = timeTo - now;
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24)) + 1;
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24)) ;
       const hours = Math.floor(
         (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
       );
