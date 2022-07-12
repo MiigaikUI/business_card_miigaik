@@ -139,7 +139,7 @@ function AbiturListFull() {
         abiturSearchUrl += `doc_type=${filters.doc_type[doc]}&`;
       }
       if (soglas) {
-        abiturSearchUrl += `soglasie=${filters.soglasie[!soglas]}&`;
+        abiturSearchUrl += `soglasie=${filters.soglasie[0]}&`;
       }
     } else {
       flag = 1;
