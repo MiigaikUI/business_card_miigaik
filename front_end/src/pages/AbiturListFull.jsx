@@ -100,10 +100,10 @@ function AbiturListFull() {
     }
     switch (soglas) {
       case true:
-        soglas = 1;
+        soglas = 0;
         break;
       case false:
-        soglas = 0;
+        soglas = 1;
         break;
     }
 

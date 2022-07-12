@@ -31,7 +31,7 @@ export default function Timer() {
     events.map((item, index) => {
       let date = new Date(item.date);
       let actual_date = new Date();
-      if (actual_date > date) {
+      if (actual_date >= date) {
         current = index;
       }
   
@@ -42,6 +42,7 @@ export default function Timer() {
   var timeTo = new Date()
   if (intamural.length > 0){
     timeTo = new Date(intamural[activeStepFinder(intamural)].date)
+
   }
 
   const activeTitleFinder = () => {
@@ -61,7 +62,7 @@ export default function Timer() {
       const now = new Date().getTime();
       const distance = timeTo - now;
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24)) + 1;
       const hours = Math.floor(
         (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
       );
