@@ -157,7 +157,7 @@ export default function Timeline() {
         current = index;
       }
     });
-    return current + 1;
+    return current ;
   };
 
   const [step, setStep] = useState(0);
